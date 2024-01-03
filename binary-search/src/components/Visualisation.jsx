@@ -9,6 +9,7 @@ const Visualisation = () => {
   const right=useSelector((state)=>state.binary.right)
   return (
     <div className="Visualization">
+      
       <h1>Visualisation</h1>
 
       <div className="Array">
@@ -21,8 +22,10 @@ const Visualisation = () => {
           </div>
         ))}
       </div>
-      <div className='result'>{ result === -1 ? <div>Not Found</div> : <div>Element found at {result+1}</div>}
-       </div>
+
+      <p>{ result === -1 ? <h4> Not Found</h4> : <h4>Element found at {result+1}</h4>}
+       </p>
+
     </div>
   );
 };

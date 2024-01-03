@@ -80,7 +80,7 @@ const BinarySearch = () => {
 
       <button onClick={binarySearch}>Search Number</button> <br/>
 
-      {timeTaken !== null && <p>Search Time : {timeTaken.toFixed(3)} ms</p>}
+      {timeTaken !== null && <p> Search Time : {timeTaken.toFixed(3)} ms</p>}
     </div>
   );
 };

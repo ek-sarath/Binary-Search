@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  align-items: center;
+  align-items: center;;
 }
 
 .BinarySearch {
@@ -13,13 +13,13 @@ body {
 
 .Array {
   display: flex;
+  width: 98%;
   justify-content: center;
-  width: 99%;
   flex-wrap: wrap;
 }
 
 .ArrayElement {
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   padding: 10px;
   margin: 4px;
   opacity: 1;
@@ -29,9 +29,6 @@ body {
   border-radius: 4px;
 }
 
-/* .ArrayElement:hover {
-  background-color: #0ca10c;
-} */
 
 .inactive {
   opacity: 0.5;

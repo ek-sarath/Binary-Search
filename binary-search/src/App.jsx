@@ -1,13 +1,13 @@
 import React from 'react';
-import BinarySearch from './components/BinarySearch';
 import './App.css';
+import BinarySearch from './components/BinarySearch';
 import Visualisation from './components/Visualisation';
 
 const App = () => {
   return (
     <div>
-      <h1>Binary Search App</h1><br/>
-      <BinarySearch /><br/><br/>
+      <h1>Binary Search App</h1>
+      <BinarySearch />
       <Visualisation/>
     </div>
   );

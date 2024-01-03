@@ -1,6 +1,44 @@
-#root {
-  margin: 0 auto;
-  padding: 2rem;
+body {
   text-align: center;
+  align-items: center;
 }
 
+.BinarySearch {
+  padding: 10px;
+}
+
+.Visualisation {
+  margin-top: 20px;
+}
+
+.Array {
+  display: flex;
+  justify-content: center;
+  width: 99%;
+  flex-wrap: wrap;
+}
+
+.ArrayElement {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 4px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  background-color: #5fb0fb;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* .ArrayElement:hover {
+  background-color: #0ca10c;
+} */
+
+.inactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ArrayElement,
+.inactive {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,79 +1,88 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import '../App.css'
+import {useDispatch} from "react-redux";
+import {setresult, settarget, setInputArray, setleft, setright } from '../Redux/binarySlice';
 
-const BinarySearchComponent = () => {
-  const [inputArray, setInputArray] = useState('');
-  const [searchValue, setSearchValue] = useState('');
-  const [resultIndex, setResultIndex] = useState(null);
+const BinarySearch = () => {
+  const [userArray, setUserArray] = useState([null]);
+  const [target, setTarget] = useState('');
   const [timeTaken, setTimeTaken] = useState(null);
+  const dispatch=useDispatch()
+  const handleInputChange=(e)=>{
+  const value=e.target.value.split(',').map(Number)
+  setUserArray(value)
+  dispatch(setInputArray(value))
+ }
 
-  const binarySearch = () => {
-    const startTime = performance.now();
-
-    const array = inputArray.split(',').map((item) => parseInt(item, 10))
-      .sort((a, b) => a - b);
-
-    const target = parseInt(searchValue, 10);
+  const binarySearch = async () => {
+    const startTime = performance.now(); 
     let left = 0;
-    let right = array.length - 1;
+    dispatch(setleft(left))
+    let right = userArray.length - 1;
+    dispatch(setright(right))
 
     while (left <= right) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const mid = Math.floor((left + right) / 2);
-
-      if (array[mid] === target) {
-        setResultIndex(mid);
-        const endTime = performance.now();
-        setTimeTaken((endTime - startTime).toFixed(3));
+      
+      if (userArray[mid] === target) {
+        dispatch(setleft(mid));
+        dispatch(setright(mid));
+        dispatch(setresult(mid))
+        const endTime = performance.now(); 
+        setTimeTaken(endTime - startTime); 
+        dispatch(settarget(target));
         return;
-      }
-
-      if (array[mid] < target) {
+      } else if (userArray[mid] < target) {
         left = mid + 1;
+        
+        dispatch(setleft(left))
       } else {
         right = mid - 1;
+        dispatch(setright(right))
       }
     }
 
-    setResultIndex(null);
-    setTimeTaken(null);
+    dispatch(setresult(-1))
+    const endTime = performance.now(); 
+    setTimeTaken (endTime - startTime); 
   };
 
   return (
-    <div>
-      <label>
-        Enter a sorted array:
-        <input
-          type="text"
-          value={inputArray}
-          onChange={(e) => setInputArray(e.target.value)}
-        />
-      </label>
-      <br/>
+    <div className='BinarySearch'>
+      
+        <label>
+          Enter a sorted array :
+          <input
+            type="text"
+            onChange= {handleInputChange}
+          />
+        </label><br/><br/>
 
-      {inputArray && (
+      {/* {userArray && (
         <p>
-          Entered Array: [{inputArray}]
+          Entered Array : {userArray}
         </p>
-      )}<br/>
+      )}<br/> */}
 
+      
+        <label>
+        Enter a number to search :
+          <input
+            type="text"
+            value={target}
+            onChange={(e) => {
+              setTarget(Number(e.target.value));
+              dispatch(settarget(Number(e.target.value)));
+            }}
+          />
+        </label><br/><br/>
 
-      <label>
-        Enter a number to search:
-        <input
-          type="text"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-      </label>
-      <br/><br/>
-      <button onClick={binarySearch}>Search Number</button>
-      <p>
-        {resultIndex !== null
-          ? `Element found at index ${resultIndex}`
-          : 'Element not found'}
-      </p>
-      <p>Search Time : { timeTaken} ms</p>
+      <button onClick={binarySearch}>Search Number</button> <br/>
+
+      {timeTaken !== null && <p>Search Time : {timeTaken.toFixed(3)} ms</p>}
     </div>
   );
 };
 
-export default BinarySearchComponent;
+export default BinarySearch;

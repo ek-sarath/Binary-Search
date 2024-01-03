@@ -61,7 +61,7 @@ const BinarySearch = () => {
 
         {userArray && (
           <p>
-             Entered Array : <br/>{userArray.join(', ')}
+             <h4>Entered Array :</h4>{userArray.join(', ')}
          </p>
          )}<br/>
 

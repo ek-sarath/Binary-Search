@@ -59,11 +59,11 @@ const BinarySearch = () => {
           />
         </label><br/><br/>
 
-      {/* {userArray && (
-        <p>
-          Entered Array : {userArray}
-        </p>
-      )}<br/> */}
+        {userArray && (
+          <p>
+             Entered Array : <br/>{userArray.join(', ')}
+         </p>
+         )}<br/>
 
       
         <label>

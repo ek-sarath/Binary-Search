@@ -8,7 +8,7 @@ const Visualisation = () => {
   const left=useSelector((state)=>state.binary.left)
   const right=useSelector((state)=>state.binary.right)
   return (
-    <div className="Visualisation">
+    <div className="Visualization">
       <h1>Visualisation</h1>
 
       <div className="Array">
